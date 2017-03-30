@@ -18,4 +18,35 @@
 
     <script src="main.js" type="text/javascript"></script>
   </body>
+   
 </html>
+
+// ==UserScript==
+// @name           rope read
+// @version        0.0.2
+// @description    Reverse every other line in a paragraph on hover.
+// @author         Marco Wahl
+// @license        GPL v3 or later version
+// @namespace      https://github.com/marcowahl
+// @include        *
+// @require        https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+// @require        http://cdn.jsdelivr.net/lining.js/0.3.3/lining.min.js
+// @note           201511121010
+// ==/UserScript==
+
+$("head").append('<style type="text/css">p:hover { animation: rr-p-highlight 3s 1; } </style>');
+$("head").append('<style type="text/css">@keyframes rr-p-highlight { 0% { box-shadow: inset 0 0 5px 5px blue;}} </style>');
+$("head").append('<style type="text/css">.poem .line:nth-of-type(2n) { -moz-transform:rotate(180deg);}</style>');
+
+// Pimp candidates for text sections with a div (for which the lines
+// can be identified by lining.js).  Up to now all <p> sections are
+// considered candidates.
+$("p").append(function () {
+    return $("<div>").append($(this).contents()).addClass("rr"); });
+
+$(".rr").hover(function() {
+    if (!$(this).hasClass("poem")) {
+        $(this).addClass("poem");
+        lining( this, {'autoResize': true});
+    }
+});
