@@ -19,7 +19,21 @@
    Unter anderem sind Projekte in Kasachstan im Gespräch, um die Anlage in Aqtau damit zu rüsten. Früher hatte dort ein BN-350 im Kernkraftwerk Aqtau den Dampf für die Meerwasserentsalzungsanlage geliefert. Dieser wurde aber 1999 abgeschaltet. Auch Projekte für ein neues Kernkraftwerk Bilibino sind im Gespräch. Konkret geplant ist keines dieser Projekte. Sicher geplant ist das Kernkraftwerk Kola II. Dieser Reaktor ist aber noch umstritten, da dort auch ein WWER-1200 (AES 2006) in Frage kommt. Vier weitere Reaktoren kommen für ein Kernkraftwerk in der Oblast Archangelsk in Frage.
    </p>
 
-    <script src="main.js" type="text/javascript"></script>
+    <script  type="text/javascript">
+// Pimp candidates for text sections with a div (for which the lines
+// can be identified by lining.js).  Up to now all <p> sections are
+// considered candidates.
+$("p").append(function () {
+    return $("<div>").append($(this).contents()).addClass("rr"); });
+
+$(".rr").hover(function() {
+    if (!$(this).hasClass("poem")) {
+        $(this).addClass("poem");
+        lining( this, {'autoResize': true});
+    }
+});
+
+    </script>
   </body>
    
 </html>
@@ -37,18 +51,3 @@
 // @note           201511121010
 // ==/UserScript==
 
-<!-- kommentar in html -->
-<!-- mehrere zeilen 
-// Pimp candidates for text sections with a div (for which the lines
-// can be identified by lining.js).  Up to now all <p> sections are
-// considered candidates.
-$("p").append(function () {
-    return $("<div>").append($(this).contents()).addClass("rr"); });
-
-$(".rr").hover(function() {
-    if (!$(this).hasClass("poem")) {
-        $(this).addClass("poem");
-        lining( this, {'autoResize': true});
-    }
-});
--->
